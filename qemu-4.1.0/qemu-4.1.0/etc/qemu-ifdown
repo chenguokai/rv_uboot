@@ -1,0 +1,22 @@
+#!/bin/bash
+if [ -n "$1" ];then
+	IFNAME=enp0s5
+
+	ip link set $IFNAME down
+	ip link set $1 down
+	ip link set br0 down
+
+	ip link set $1 nomaster
+	ip link set $IFNAME nomaster
+
+	ip link del br0
+
+	ip link set $IFNAME up
+
+	#sudo pkill -9 dhclient
+	sleep 5
+	dhclient -v $IFNAME
+
+else
+	echo "ERROR:no interface specified"
+fi

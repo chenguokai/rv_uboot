@@ -1,0 +1,4 @@
+#!/bin/bash
+sudo ./qemu-4.1.0/qemu-4.1.0/riscv64-softmmu/qemu-system-riscv64 -nographic -machine virt -m 256M -kernel ./u-boot/u-boot/u-boot  -drive if=none,format=raw,id=image,file=/home/xim/rt-thread/bsp/riscv64-virt/image -device virtio-blk-device,drive=image -netdev tap,id=mytap,ifname=tap0,script=./qemu-4.1.0/qemu-4.1.0/etc/qemu-ifup,downscript=./qemu-4.1.0/qemu-4.1.0/etc/qemu-ifdown -device e1000,netdev=mytap -s -S
+
+# sudo ./qemu-4.1.0/qemu-4.1.0/riscv64-softmmu/qemu-system-riscv64 -nographic -machine virt -m 256M -kernel ./u-boot/u-boot/u-boot  -drive if=none,format=raw,id=image,file=/mnt/psf/Home/p2-start/image-teacher -device virtio-blk-device,drive=image -netdev tap,id=mytap,ifname=tap0,script=./qemu-4.1.0/qemu-4.1.0/etc/qemu-ifup,downscript=./qemu-4.1.0/qemu-4.1.0/etc/qemu-ifdown -device e1000,netdev=mytap -s -S
